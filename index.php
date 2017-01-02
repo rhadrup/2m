@@ -27,8 +27,6 @@
 	</form>
 <?php
 	if($_SERVER['REQUEST_METHOD'] === "POST") {
-			echo $_POST['comment'];
-
 			$stmt = mysqli_prepare($link, "INSERT INTO Comment (text, headline, article_id, user_id) VALUES (?,?,?,?)");
 			mysqli_stmt_bind_param($stmt, 'ssii', $text, $headline, $articleId, $userId);
 			$text = $_POST['comment'];

@@ -37,12 +37,12 @@
 			mysqli_stmt_execute($stmt);
 	}
 ?>
-	<p> Nyeste kommentar:
+	<h2> Nyeste kommentar:</h2>
 	<?php 
 		$resultsetCmt = mysqli_query ($link, "SELECT headline, text FROM Comment"); 
 		while($row = mysqli_fetch_assoc($resultsetCmt)) {
 			?><h2 class='comment'><?= $row['headline']; ?></h2>
-			<div class='comment'><?= $row['text']; ?></div>
+			<div class='comment'><?= $row['text']; ?></div><br>
 		<?php
 		}
 	?>

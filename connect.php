@@ -2,7 +2,7 @@
 //connect.php
 
 function connect() {
-	include "secrets.php";
+	include "../secrets/secrets.php";
 	 
 	$mysqllink = mysqli_connect($server, $username,  $password);
 	 

@@ -21,10 +21,6 @@
 	
 	<h2>Respond to this article</h2>
 	
-	<form action="index.php" method="post">
-		<textarea name="comment" style="width: 200px; height: 85px;" placeholder="Write your comment"></textarea><br>
-		<input type="submit" value=" ok ">
-	</form>
 <?php
 	if($_SERVER['REQUEST_METHOD'] === "POST") {
 			$stmt = mysqli_prepare($link, "INSERT INTO Comment (text, headline, article_id, user_id) VALUES (?,?,?,?)");
@@ -35,6 +31,17 @@
 			$userId = 0;
 			/* execute prepared statement */
 			mysqli_stmt_execute($stmt);
+			echo "<h3>Din kommentar er oprettet </h3><div>" . $text . "</div>";
+
+
+	} else {
+?>
+	<form action="index.php" method="post">
+		<textarea name="comment" style="width: 200px; height: 85px;" placeholder="Write your comment"></textarea><br>
+		<input type="submit" value=" ok ">
+	</form>
+
+<?php
 	}
 ?>
 	<h2> Nyeste kommentar:</h2>
@@ -48,4 +55,4 @@
 	?>
 
 </body>
-</html>
+	</html>

@@ -25,19 +25,18 @@
 		<textarea name="comment" style="width: 200px; height: 85px;" placeholder="Write your comment"></textarea><br>
 		<input type="submit" value=" ok ">
 	</form>
-
-	<?php
-		echo $_POST['comment'];
-
-		$stmt = mysqli_prepare($link, "INSERT INTO Comment (text, headline, article_id, user_id) VALUES (?,?,?,?)");
-		mysqli_stmt_bind_param($stmt, 'ssii', $text, $headline, $articleId, $userId);
-		$text = $_POST['comment'];
-		$headline = 'headline for comment';
-		$articleId = 0;
-		$userId = 0;
-		/* execute prepared statement */
-		mysqli_stmt_execute($stmt);
-	?>
+<?php
+	if($_SERVER['REQUEST_METHOD'] === "POST") {
+			$stmt = mysqli_prepare($link, "INSERT INTO Comment (text, headline, article_id, user_id) VALUES (?,?,?,?)");
+			mysqli_stmt_bind_param($stmt, 'ssii', $text, $headline, $articleId, $userId);
+			$text = $_POST['comment'];
+			$headline = 'headline for comment';
+			$articleId = 0;
+			$userId = 0;
+			/* execute prepared statement */
+			mysqli_stmt_execute($stmt);
+	}
+?>
 
 </body>
 </html>

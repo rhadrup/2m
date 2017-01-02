@@ -2,10 +2,7 @@
 //connect.php
 
 function connect() {
-	$server = "mysql.hostinger.dk";
-	$username   = "USERNAME";
-	$password   = "PASSWORD";
-	$database   = "DATABASE";
+	include "secrets.php";
 	 
 	$mysqllink = mysqli_connect($server, $username,  $password);
 	 
